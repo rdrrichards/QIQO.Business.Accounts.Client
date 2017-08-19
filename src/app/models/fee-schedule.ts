@@ -1,6 +1,5 @@
 export interface IFeeSchedule {
     feeScheduleKey: number;
-    // companyKey: number;
     accountKey: number;
     productKey: number;
     feeScheduleStartDate: Date;

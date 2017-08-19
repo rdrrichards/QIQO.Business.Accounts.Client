@@ -5,6 +5,7 @@ import { IEmployee } from './employee';
 
 export interface IAccount {
     accountKey: number;
+    companyKey: number;
     accountCode: string;
     accountName: string;
     accountDesc: string;
