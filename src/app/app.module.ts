@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MdGridListModule } from '@angular/material';
 
@@ -22,9 +23,11 @@ import { AccountService, AddressService, CompanyService, EmployeeService,
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MdButtonModule, MdCheckboxModule, MdGridListModule
   ],
-  providers: [],
+  providers: [ AccountService, AddressService, CompanyService, EmployeeService,
+    EntityAttributeService, FeeScheduleService, LoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

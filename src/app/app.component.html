@@ -4,4 +4,9 @@
   </h1>
 </div>
 
-
+<div *ngIf="!companies">Loading data...</div>
+<div *ngIf="companies">
+  <ul>
+    <li *ngFor="let company of companies">{{company.companyName}}</li>
+  </ul>
+</div>
