@@ -15,6 +15,7 @@ export class AccountService {
   constructor(private httpClient: HttpClient) { }
 
   getAccountsByCompany(companyId: number): Observable<IAccount[]> {
+    console.log('AccountService:getAccountsByCompany');
     return this.httpClient.get<IAccount[]>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).map(
       response => response
     );

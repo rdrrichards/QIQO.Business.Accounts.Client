@@ -6,9 +6,10 @@
 
 <div *ngIf="!companies">Loading data...</div>
 <div *ngIf="companies">
-  <ul>
-    <li *ngFor="let company of companies">
-      <a href="" [routerLink]="['/account', company.companyKey]">{{company.companyName}}</a>
-    </li>
-  </ul>
+  <md-nav-list>
+    <a md-list-item href="" *ngFor="let company of companies" [routerLink]="['/accounts', company.companyKey]">
+        {{company.companyName}}
+      </a>
+  </md-nav-list>
 </div>
+<router-outlet></router-outlet>
