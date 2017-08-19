@@ -7,6 +7,8 @@
 <div *ngIf="!companies">Loading data...</div>
 <div *ngIf="companies">
   <ul>
-    <li *ngFor="let company of companies">{{company.companyName}}</li>
+    <li *ngFor="let company of companies">
+      <a href="" [routerLink]="['/account', company.companyKey]">{{company.companyName}}</a>
+    </li>
   </ul>
 </div>
