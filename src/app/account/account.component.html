@@ -2,15 +2,15 @@
 <div *ngIf="account">
   <h1>{{account.account.accountName}}</h1>
 
-  {{account.account.accountKey}}<br/>
-  {{account.account.accountName}}<br/>
-  {{account.account.accountDesc}}<br/>
-  {{account.account.accountDBA}}<br/>
-  {{account.account.accountCode}}<br/>
-  {{account.account.accountStartDate}}<br/>
-  {{account.account.accountEndDate}}<br/><br/>
-  {{account.account.addresses.length}}<br/>
-  {{account.account.accountAttributes.length}}<br/>
-  {{account.account.employees.length}}<br/>
-  {{account.account.feeSchedules.length}}<br/>
+  Account Key: {{account.account.accountKey}}<br/>
+  Account Code: {{account.account.accountCode}}<br/>
+  Account Name: {{account.account.accountName}}<br/>
+  Account Description: {{account.account.accountDesc}}<br/>
+  Account DBA: {{account.account.accountDBA}}<br/>
+  Account Start Date: {{account.account.accountStartDate}}<br/>
+  Account End Date: {{account.account.accountEndDate}}<br/><br/>
+  Account Address Count: {{account.account.addresses.length}}<br/>
+  Account Attribute Count: {{account.account.accountAttributes.length}}<br/>
+  Account Employee Count: {{account.account.employees.length}}<br/>
+  Account Fee Schedule Count: {{account.account.feeSchedules.length}}<br/>
 </div>

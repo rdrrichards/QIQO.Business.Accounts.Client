@@ -6,18 +6,24 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { IAccount, IAccountViewModel } from '../models/account';
 
 @Injectable()
 export class AccountService {
+  dataChange: BehaviorSubject<IAccountViewModel[]> = new BehaviorSubject<IAccountViewModel[]>([]);
+  get data(): IAccountViewModel[] { return this.dataChange.value; }
 
   constructor(private httpClient: HttpClient) { }
 
   getAccountsByCompany(companyId: number): Observable<IAccountViewModel[]> {
     // console.log('AccountService:getAccountsByCompany');
     return this.httpClient.get<IAccountViewModel[]>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).map(
-      response => response
+      response => {
+        this.dataChange.next(response);
+        return response;
+      }
     );
   }
 

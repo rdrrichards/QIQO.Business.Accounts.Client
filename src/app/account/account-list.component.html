@@ -1,10 +1,39 @@
 <h1>Account List</h1>
+<div class="example-container mat-elevation-z8">
 
-<div *ngIf="!accounts">Loading data...</div>
-<div *ngIf="accounts">
-  <md-nav-list>
-    <a md-list-item href="" *ngFor="let account of accounts" [routerLink]="['/accounts', account.account.accountKey]">
-        {{account.account.accountName}}
-      </a>
-  </md-nav-list>
+  <md-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="account.accountKey">
+      <md-header-cell *cdkHeaderCellDef> Key </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.account.accountKey}} </md-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container cdkColumnDef="account.accountCode">
+      <md-header-cell *cdkHeaderCellDef> Code </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.account.accountCode}} </md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="account.accountName">
+      <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.account.accountName}} </md-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container cdkColumnDef="account.accountDesc">
+      <md-header-cell *cdkHeaderCellDef> Description </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.account.accountDesc}} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+
+  <md-paginator #paginator [length]="accounts.length" [pageIndex]="0" [pageSize]="7" [pageSizeOptions]="[5, 10, 25, 100]">
+  </md-paginator>
 </div>

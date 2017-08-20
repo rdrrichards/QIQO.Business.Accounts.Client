@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdListModule } from '@angular/material';
+import { MdTableModule, MdPaginatorModule, MdGridListModule, MdListModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
@@ -31,7 +33,9 @@ import {
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MdButtonModule, MdCheckboxModule, MdGridListModule, MdListModule,
+    HttpModule,
+    MdTableModule, MdPaginatorModule, MdGridListModule, MdListModule,
+    CdkTableModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'companies', pathMatch: 'full' },
       { path: 'companies', component: CompanyComponent },
