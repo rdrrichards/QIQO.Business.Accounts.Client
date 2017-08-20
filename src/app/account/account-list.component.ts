@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IAccount } from '../models/account';
+import { IAccount, IAccountViewModel } from '../models/account';
 import { AccountService } from '../services/account.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -9,14 +9,14 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './account-list.component.html'
 })
 export class AccountListComponent implements OnInit, OnDestroy {
-    accounts: IAccount[] = [];
+    accounts: IAccountViewModel[] = [];
     paramSubscription: Subscription;
 
     constructor(private accountService: AccountService,
         private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        console.log('AccountListComponent:ngOnInit');
+        // console.log('AccountListComponent:ngOnInit');
         this.paramSubscription = this.activatedRoute.params.subscribe(params => {
             const companyId = +params['id'];
             this.accountService.getAccountsByCompany(companyId)

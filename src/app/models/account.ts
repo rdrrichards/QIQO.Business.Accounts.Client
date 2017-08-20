@@ -18,3 +18,6 @@ export interface IAccount {
     feeSchedules: IFeeSchedule[];
 }
 
+export interface IAccountViewModel {
+    account: IAccount;
+}

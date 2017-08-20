@@ -1,3 +1,4 @@
-<p>
-  Account works!
-</p>
+<div *ngIf="!account">Loading data...</div>
+<div *ngIf="account">
+  <h1>{{account.account.accountName}}</h1>
+</div>

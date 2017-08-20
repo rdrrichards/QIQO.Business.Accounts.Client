@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule, MdCheckboxModule, MdGridListModule, MdListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { CompanyComponent } from './company/company.component';
 import { AccountComponent } from './account/account.component';
 import { AccountListComponent } from './account/account-list.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -23,7 +24,8 @@ import {
     AccountComponent,
     EmployeeComponent,
     AddressComponent,
-    FeeScheduleComponent
+    FeeScheduleComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
@@ -31,11 +33,13 @@ import {
     HttpClientModule,
     MdButtonModule, MdCheckboxModule, MdGridListModule, MdListModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'accounts', pathMatch: 'full' },
-      { path: 'accounts', component: AccountListComponent },
-      { path: 'accounts/:id', component: AccountListComponent },
+      { path: '', redirectTo: 'companies', pathMatch: 'full' },
+      { path: 'companies', component: CompanyComponent },
+      { path: 'companies/:id', component: AccountListComponent },
+      // { path: 'accounts', component: AccountListComponent },
+      { path: 'accounts/:id', component: AccountComponent },
       // { path: 'accounts/:id/edit', component: AccountComponent },
-      { path: '**', redirectTo: 'accounts' }
+      { path: '**', redirectTo: 'companies' }
     ])
 
   ],

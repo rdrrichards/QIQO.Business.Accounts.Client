@@ -1,3 +1,10 @@
-<p>
-    Account List Works!
-</p>
+<h1>Account List</h1>
+
+<div *ngIf="!accounts">Loading data...</div>
+<div *ngIf="accounts">
+  <md-nav-list>
+    <a md-list-item href="" *ngFor="let account of accounts" [routerLink]="['/accounts', account.account.accountKey]">
+        {{account.account.accountName}}
+      </a>
+  </md-nav-list>
+</div>
