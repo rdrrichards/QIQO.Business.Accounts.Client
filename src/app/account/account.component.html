@@ -1,4 +1,16 @@
 <div *ngIf="!account">Loading data...</div>
 <div *ngIf="account">
   <h1>{{account.account.accountName}}</h1>
+
+  {{account.account.accountKey}}<br/>
+  {{account.account.accountName}}<br/>
+  {{account.account.accountDesc}}<br/>
+  {{account.account.accountDBA}}<br/>
+  {{account.account.accountCode}}<br/>
+  {{account.account.accountStartDate}}<br/>
+  {{account.account.accountEndDate}}<br/><br/>
+  {{account.account.addresses.length}}<br/>
+  {{account.account.accountAttributes.length}}<br/>
+  {{account.account.employees.length}}<br/>
+  {{account.account.feeSchedules.length}}<br/>
 </div>

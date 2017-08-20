@@ -13,7 +13,7 @@ export interface IAccount {
     accountStartDate: Date;
     accountEndDate: Date;
     addresses: IAddress[];
-    attributes: IEntityAttribute[];
+    accountAttributes: IEntityAttribute[];
     employees: IEmployee[];
     feeSchedules: IFeeSchedule[];
 }
