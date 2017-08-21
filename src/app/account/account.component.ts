@@ -13,19 +13,21 @@ export class AccountComponent implements OnInit {
   account: IAccountViewModel;
   paramSubscription: Subscription;
 
-    constructor(private accountService: AccountService,
-      private activatedRoute: ActivatedRoute) {
-      // console.log('AccountComponent:constructor');
-    }
+  constructor(private accountService: AccountService,
+    private activatedRoute: ActivatedRoute) {
+    // console.log('AccountComponent:constructor');
+  }
 
-    ngOnInit() {
-      // console.log('AccountComponent:ngOnInit');
-      this.paramSubscription = this.activatedRoute.params.subscribe(params => {
-          const accountId = +params['id'];
-          this.accountService.getAccount(accountId)
-              .subscribe(account => this.account = account);
-      }
-      );
+  ngOnInit() {
+    // console.log('AccountComponent:ngOnInit');
+    this.paramSubscription = this.activatedRoute.params.subscribe(params => {
+      const accountId = +params['id'];
+      this.accountService.getAccount(accountId)
+        .subscribe(account => this.account = account);
     }
-
+    );
+  }
+  goBack() {
+    window.history.back();
+  }
 }

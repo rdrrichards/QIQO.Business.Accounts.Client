@@ -22,7 +22,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
     paramSubscription: Subscription;
     dataSource: AccountDataSource | null;
     @ViewChild(MdPaginator) paginator: MdPaginator;
-    displayedColumns = ['account.accountKey', 'account.accountCode', 'account.accountName', 'account.accountDesc'];
+    displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
 
     constructor(private accountService: AccountService,
         private activatedRoute: ActivatedRoute) { }
