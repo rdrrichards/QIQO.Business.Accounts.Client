@@ -1,4 +1,4 @@
-const baseHost = 'http://192.168.1.65:32771/api/';
+const baseHost = 'http://192.168.1.65:32768/api/';
 
 export let CONFIG = {
   baseUrls: {
