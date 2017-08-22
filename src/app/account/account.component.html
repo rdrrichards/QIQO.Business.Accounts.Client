@@ -1,18 +1,29 @@
 <div *ngIf="!account">Loading data...</div>
 <div *ngIf="account">
-  <h1>{{account.account.accountName}}</h1>
 
-  Account Key: {{account.account.accountKey}}<br/>
-  Account Code: {{account.account.accountCode}}<br/>
-  Account Name: {{account.account.accountName}}<br/>
-  Account Description: {{account.account.accountDesc}}<br/>
-  Account DBA: {{account.account.accountDBA}}<br/>
-  Account Start Date: {{account.account.accountStartDate}}<br/>
-  Account End Date: {{account.account.accountEndDate}}<br/><br/>
-  Account Address Count: {{account.account.addresses.length}}<br/>
-  Account Attribute Count: {{account.account.accountAttributes.length}}<br/>
-  Account Employee Count: {{account.account.employees.length}}<br/>
-  Account Fee Schedule Count: {{account.account.feeSchedules.length}}<br/>
+  <md-card class="example-card">
+    <md-card-header>
+      <div md-card-avatar class="example-header-image"></div>
+      <md-card-title>{{account.account.accountCode}} : {{account.account.accountName}}</md-card-title>
+      <md-card-subtitle>{{account.account.accountDesc}}</md-card-subtitle>
+    </md-card-header>
+    <!-- <img md-card-image src="assets/img/examples/shiba2.jpg"> -->
+    <md-card-content>
+      <p>
+        Start Date: {{account.account.accountStartDate}}<br/> 
+        End Date: {{account.account.accountEndDate}}<br/>        
+        Address Count: {{account.account.addresses.length}}<br/> 
+        Attribute Count: {{account.account.accountAttributes.length}}<br/>        
+        Employee Count: {{account.account.employees.length}}<br/> 
+        Fee Schedule Count: {{account.account.feeSchedules.length}}<br/>
+      </p>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>LIKE</button>
+      <button md-button>SHARE</button>
+    </md-card-actions>
+  </md-card>
 </div>
+
 <br/>
 <a href="" (click)="goBack()"> Back to accouts list </a>
