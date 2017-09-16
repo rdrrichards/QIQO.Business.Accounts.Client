@@ -10,11 +10,11 @@
     <!-- <img md-card-image src="assets/img/examples/shiba2.jpg"> -->
     <md-card-content>
       <p>
-        Start Date: {{account.account.accountStartDate}}<br/> 
-        End Date: {{account.account.accountEndDate}}<br/>        
-        Address Count: {{account.account.addresses.length}}<br/> 
-        Attribute Count: {{account.account.accountAttributes.length}}<br/>        
-        Employee Count: {{account.account.employees.length}}<br/> 
+        Start Date: {{account.account.accountStartDate | date}}<br/>
+        End Date: {{account.account.accountEndDate | date}}<br/>
+        Address Count: {{account.account.addresses.length}}<br/>
+        Attribute Count: {{account.account.accountAttributes.length}}<br/>
+        Employee Count: {{account.account.employees.length}}<br/>
         Fee Schedule Count: {{account.account.feeSchedules.length}}<br/>
       </p>
     </md-card-content>
