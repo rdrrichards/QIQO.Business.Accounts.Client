@@ -1,5 +1,5 @@
 import { DataSource } from '@angular/cdk/table';
-import { MdPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -10,7 +10,7 @@ import { AccountService } from '../services/account.service';
 export class AccountDataSource extends DataSource<any> {
     constructor(private accountService: AccountService,
         private companyId: number,
-        private _paginator: MdPaginator) {
+        private _paginator: MatPaginator) {
         super();
     }
 

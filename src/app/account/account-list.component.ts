@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataSource } from '@angular/cdk/table';
-import { MdPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -21,7 +21,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
     accounts: IAccountViewModel[] = [];
     paramSubscription: Subscription;
     dataSource: AccountDataSource | null;
-    @ViewChild(MdPaginator) paginator: MdPaginator;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
     displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
 
     constructor(private accountService: AccountService,

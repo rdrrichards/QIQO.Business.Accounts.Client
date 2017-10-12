@@ -3,9 +3,9 @@
 </p>
 <div *ngIf="!companies">Loading data...</div>
 <div *ngIf="companies">
-  <md-nav-list>
-    <a md-list-item href="" *ngFor="let company of companies" [routerLink]="['/companies', company.companyKey]">
+  <mat-nav-list>
+    <a mat-list-item href="" *ngFor="let company of companies" [routerLink]="['/companies', company.companyKey]">
         {{company.companyName}}
       </a>
-  </md-nav-list>
+  </mat-nav-list>
 </div>

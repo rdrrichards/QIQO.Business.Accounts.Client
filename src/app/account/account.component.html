@@ -1,14 +1,14 @@
 <div *ngIf="!account">Loading data...</div>
 <div *ngIf="account">
 
-  <md-card class="example-card">
-    <md-card-header>
-      <div md-card-avatar class="example-header-image"></div>
-      <md-card-title>{{account.account.accountCode}} : {{account.account.accountName}}</md-card-title>
-      <md-card-subtitle>{{account.account.accountDesc}}</md-card-subtitle>
-    </md-card-header>
-    <!-- <img md-card-image src="assets/img/examples/shiba2.jpg"> -->
-    <md-card-content>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{account.account.accountCode}} : {{account.account.accountName}}</mat-card-title>
+      <mat-card-subtitle>{{account.account.accountDesc}}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="assets/img/examples/shiba2.jpg"> -->
+    <mat-card-content>
       <p>
         Start Date: {{account.account.accountStartDate | date}}<br/>
         End Date: {{account.account.accountEndDate | date}}<br/>
@@ -17,13 +17,13 @@
         Employee Count: {{account.account.employees.length}}<br/>
         Fee Schedule Count: {{account.account.feeSchedules.length}}<br/>
       </p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button>LIKE</button>
-      <button md-button>SHARE</button>
-    </md-card-actions>
-  </md-card>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 
 <br/>
-<a href="" (click)="goBack()"> Back to accouts list </a>
+<a href="" (click)="goBack()"> Back to accounts list </a>
