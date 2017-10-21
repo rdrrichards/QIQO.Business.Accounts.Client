@@ -1,9 +1,12 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
-
+const path = require('path');
 module.exports = function (config) {
   config.set({
     basePath: '',
+    files: [
+      {pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css', included: true, watched: true},
+    ],
     frameworks: ['jasmine', '@angular/cli'],
     plugins: [
       require('karma-jasmine'),
@@ -16,8 +19,30 @@ module.exports = function (config) {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
-      fixWebpackSourcePaths: true
+      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: path.join(__dirname, 'coverage'),
+      fixWebpackSourcePaths: true,
+      skipFilesWithNoCoverage: true,
+      'report-config': {
+        html: {
+          subdir: 'html'
+        }
+      },
+      thresholds:  {
+        emitWarning: false, // set to `true` to not fail the test command when thresholds are not met
+        global:  { // thresholds for all files
+          statements: 85,
+          lines: 50,
+          branches: 50,
+          functions: 60
+        },
+        each:  { // thresholds per file
+          statements: 85,
+          lines: 50,
+          branches: 50,
+          functions: 60
+        }
+      }
     },
     angularCli: {
       environment: 'dev'

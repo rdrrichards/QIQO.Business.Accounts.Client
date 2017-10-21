@@ -1,25 +1,30 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountComponent } from './account.component';
+import { AccountListComponent } from './account-list.component';
 import {
-  MatCardTitle,
-  MatCard,
-  MatCardSubtitle,
-  MatCardHeader,
-  MatCardContent,
-  MatCardActions,
-  MatButton,
-  MatRipple
+  MatTableModule,
+  MatPaginatorModule,
+  MatGridListModule,
+  MatListModule,
+  MatCardModule
 } from '@angular/material';
+// import { DataSource } from '@angular/cdk/table';
+
 import { AccountService } from '../services/account.service';
-import { ActivatedRoute, ActivatedRouteStub } from '../testing/router-stubs';
+import {
+  ActivatedRoute,
+  ActivatedRouteStub,
+  RouterLinkStubDirective
+} from '../testing/router-stubs';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { Subscription } from 'rxjs/Subscription';
 
-describe('AccountComponent', () => {
-  let component: AccountComponent;
-  let fixture: ComponentFixture<AccountComponent>;
+describe('AccountListComponent', () => {
+  let component: AccountListComponent;
+  let fixture: ComponentFixture<AccountListComponent>;
   const accountServiceStub = new AccountService(
     new HttpClient({
       handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
@@ -32,29 +37,24 @@ describe('AccountComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [
-          AccountComponent,
-          MatCard,
-          MatCardTitle,
-          MatCardSubtitle,
-          MatCardHeader,
-          MatCardContent,
-          MatCardActions,
-          MatButton,
-          MatRipple
-        ],
+        declarations: [AccountListComponent, RouterLinkStubDirective],
         providers: [
           { provide: AccountService, useValue: accountServiceStub },
           { provide: ActivatedRoute, useValue: actvatedRouteStub }
-        ]
+        ],
+        schemas: [NO_ERRORS_SCHEMA],
+        imports: [MatTableModule, MatPaginatorModule]
       }).compileComponents();
-      const spy = spyOn(accountServiceStub, 'getAccount').and.callThrough();
+      const spy = spyOn(
+        accountServiceStub,
+        'getAccountsByCompany'
+      ).and.callThrough();
       // const spay = spyOn(actvatedRouteStub, 'params').and.callThrough();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccountComponent);
+    fixture = TestBed.createComponent(AccountListComponent);
     component = fixture.componentInstance;
     // fixture.detectChanges();
   });
@@ -67,7 +67,8 @@ describe('AccountComponent', () => {
     expect(component.ngOnInit()).toBeUndefined();
   });
 
-  it('goBack should return void', () => {
-    expect(component.goBack()).toBeUndefined();
+  it('ngOnDestroy should return void', () => {
+    component.paramSubscription = new Subscription();
+    expect(component.ngOnDestroy()).toBeUndefined();
   });
 });

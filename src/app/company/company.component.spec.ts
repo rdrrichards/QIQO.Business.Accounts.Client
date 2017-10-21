@@ -4,20 +4,35 @@ import { MatListItem, MatList, MatRipple } from '@angular/material';
 import { CompanyComponent } from './company.component';
 import { RouterLinkStubDirective } from '../testing/router-stubs';
 import { CompanyService } from '../services/company.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 describe('CompanyComponent', () => {
   let component: CompanyComponent;
   let fixture: ComponentFixture<CompanyComponent>;
-  const companyService = new CompanyService(new HttpClient(null));
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CompanyComponent, RouterLinkStubDirective, MatListItem, MatList, MatRipple ],
-      providers: [ { provide: CompanyService, useValue: companyService } ]
+  const companyService = new CompanyService(
+    new HttpClient({
+      handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
+        return Observable.of(<HttpEvent<any>>{});
+      }
     })
-    .compileComponents();
-  }));
+  );
+
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [
+          CompanyComponent,
+          RouterLinkStubDirective,
+          MatListItem,
+          MatList,
+          MatRipple
+        ],
+        providers: [{ provide: CompanyService, useValue: companyService }]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CompanyComponent);
@@ -27,5 +42,9 @@ describe('CompanyComponent', () => {
 
   it('should be created', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('ngOnInit should be return void', () => {
+    expect(component.ngOnInit()).toBeUndefined();
   });
 });
