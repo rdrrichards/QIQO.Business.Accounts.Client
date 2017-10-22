@@ -1,38 +1,38 @@
-import { TestBed, async } from '@angular/core/testing';
-import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
+import { TestBed, async, inject } from '@angular/core/testing';
+import { HttpClientModule, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AccountService } from './account.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 
 describe('AccountService', () => {
-  let service: AccountService;
 
-  beforeEach(
-    async(() => {
-      const httpClientMock = new HttpClient({
-        handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-          return Observable.of(<HttpEvent<any>>{});
-        }
-      });
-      service = new AccountService(httpClientMock);
-      spyOn(httpClientMock, 'get').and.returnValue([]);
-      // spyOn(service, 'getAccount').and.returnValue(null);
-    })
-  );
-
-  it('should create', () => {
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ HttpClientModule, HttpClientTestingModule ],
+      providers: [ AccountService ]
+    });
   });
 
-  it('getAccount should return something', () => {
-    expect(service.getAccount(1)).toBeDefined();
-  });
+  afterEach(inject([HttpTestingController], (backend: HttpTestingController) => {
+    backend.verify();
+  }));
 
-  it('getAccountsByCompany should return something', () => {
-    expect(service.getAccountsByCompany(1)).toBeDefined();
-  });
+  it(`should create`, async(inject([AccountService, HttpTestingController],
+    (service: AccountService, backend: HttpTestingController) => {
+      expect(service).toBeTruthy();
+  })));
 
-  it('data should return something', () => {
-    expect(service.data).toBeDefined();
-  });
+  it(`getAccount should return something`, async(inject([AccountService, HttpTestingController],
+    (service: AccountService, backend: HttpTestingController) => {
+      expect(service.getAccount(1)).toBeTruthy();
+  })));
+
+  it(`getAccountsByCompany should return something`, async(inject([AccountService, HttpTestingController],
+    (service: AccountService, backend: HttpTestingController) => {
+      expect(service.getAccountsByCompany(1)).toBeTruthy();
+  })));
+
+  it(`data should return something`, async(inject([AccountService, HttpTestingController],
+    (service: AccountService, backend: HttpTestingController) => {
+      expect(service.data).toBeTruthy();
+  })));
 });

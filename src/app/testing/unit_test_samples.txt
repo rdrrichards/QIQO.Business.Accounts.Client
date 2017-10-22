@@ -1,0 +1,180 @@
+import { TestBed, async, inject } from '@angular/core/testing';
+import { HttpClientModule, HttpRequest, HttpParams } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientFeatureService } from './http-client-feature.service';
+
+describe(`HttpClientFeatureService`, () => {
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        HttpClientTestingModule
+      ],
+      providers: [
+        HttpClientFeatureService
+      ]
+    });
+  });
+
+  afterEach(inject([HttpTestingController], (backend: HttpTestingController) => {
+    backend.verify();
+  }));
+
+  it(`should send an expected login request`, async(inject([HttpClientFeatureService, HttpTestingController],
+    (service: HttpClientFeatureService, backend: HttpTestingController) => {
+      service.login('foo', 'bar').subscribe();
+
+      backend.expectOne((req: HttpRequest<any>) => {
+        const body = new HttpParams({ fromString: req.body });
+
+        return req.url === 'auth/login'
+          && req.method === 'POST'
+          && req.headers.get('Content-Type') === 'application/x-www-form-urlencoded'
+          && body.get('user') === 'foo'
+          && body.get('password') === 'bar';
+      }, `POST to 'auth/login' with form-encoded user and password`);
+  })));
+
+  it(`should emit 'false' for 401 Unauthorized`, async(inject([HttpClientFeatureService, HttpTestingController],
+    (service: HttpClientFeatureService, backend: HttpTestingController) => {
+      service.login('foo', 'bar').subscribe((next) => {
+        expect(next).toBeFalsy();
+      });
+
+      backend.expectOne('auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+  })));
+
+  it(`should emit 'true' for 200 Ok`, async(inject([HttpClientFeatureService, HttpTestingController],
+    (service: HttpClientFeatureService, backend: HttpTestingController) => {
+      service.login('foo', 'bar').subscribe((next) => {
+        expect(next).toBeTruthy();
+      });
+
+      backend.expectOne('auth/login').flush(null, { status: 200, statusText: 'Ok' });
+  })));
+
+});
+
+
+
+
+
+
+import { async, TestBed, inject } from '@angular/core/testing';
+
+import { AccountDataSource } from './account.datasource';
+
+import 'rxjs/add/observable/of';
+import {
+  HttpClientModule,
+  HttpClient,
+  HttpRequest,
+  HttpEvent
+} from '@angular/common/http';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+
+import { Observable } from 'rxjs/Observable';
+import { AccountService } from '../services/account.service';
+import {
+  MatPaginator,
+  MatPaginatorModule,
+  MatPaginatorIntl
+} from '@angular/material';
+
+describe('AccountDataSource', () => {
+  // let component: AccountDataSource;
+  // const accountServiceStub = new AccountService(
+  //   new HttpClient({
+  //     handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
+  //       return Observable.of(<HttpEvent<any>>{});
+  //     }
+  //   })
+  // );
+  // const matPaginatorStub = new MatPaginator(new MatPaginatorIntl(), null);
+
+  beforeEach(() => {
+    // 0. set up the test environment
+    TestBed.configureTestingModule({
+      imports: [
+        // no more boilerplate code w/ custom providers needed :-)
+        HttpClientModule,
+        HttpClientTestingModule,
+        MatPaginatorModule
+      ],
+      providers: [AccountService, AccountDataSource]
+    });
+  });
+
+  // beforeEach(() => {
+  //   component = new AccountDataSource(accountServiceStub, 1, matPaginatorStub);
+  //   // fixture.detectChanges();
+  // });
+
+  it(
+    `should service.data be truthy`,
+    async(
+      inject(
+        [AccountService, HttpTestingController],
+        (service: AccountService, backend: HttpTestingController) => {
+          expect(service.data).toBeTruthy();
+          // backend.expectOne('auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+        }
+      )
+    )
+  );
+
+  // it('should be created', () => {
+  //   expect(component).toBeTruthy();
+  // });
+
+  it(
+    `should be created`,
+    async(
+      inject(
+        [AccountDataSource, AccountService, 1, MatPaginator],
+        (service: AccountDataSource, accountService: AccountService, companyId: 1, _paginator: MatPaginator) => {
+          expect(service).toBeTruthy();
+          // backend.expectOne('auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+        }
+      )
+    )
+  );
+
+  // it('connect should return something', () => {
+  //   expect(component.connect()).toBeTruthy();
+  // });
+
+  it(
+    `connect should be created`,
+    async(
+      inject(
+        [AccountDataSource, HttpTestingController],
+        (service: AccountDataSource, backend: HttpTestingController) => {
+          expect(service.connect()).toBeTruthy();
+          // backend.expectOne('auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+        }
+      )
+    )
+  );
+
+  // it('disconnect should return void', () => {
+  //   expect(component.disconnect()).toBeUndefined();
+  // });
+
+  it(
+    `disconnect should be created`,
+    async(
+      inject(
+        [AccountDataSource, HttpTestingController],
+        (service: AccountDataSource, backend: HttpTestingController) => {
+          expect(service.disconnect()).toBeTruthy();
+          // backend.expectOne('auth/login').flush(null, { status: 401, statusText: 'Unauthorized' });
+        }
+      )
+    )
+  );
+});
