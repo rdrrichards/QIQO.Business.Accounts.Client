@@ -37,7 +37,7 @@ describe('CompanyComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CompanyComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture.detectChanges();
   });
 
   it('should be created', () => {

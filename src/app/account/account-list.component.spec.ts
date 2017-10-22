@@ -21,6 +21,7 @@ import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { Subscription } from 'rxjs/Subscription';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AccountListComponent', () => {
   let component: AccountListComponent;
@@ -43,7 +44,7 @@ describe('AccountListComponent', () => {
           { provide: ActivatedRoute, useValue: actvatedRouteStub }
         ],
         schemas: [NO_ERRORS_SCHEMA],
-        imports: [MatTableModule, MatPaginatorModule]
+        imports: [MatTableModule, MatPaginatorModule, BrowserAnimationsModule]
       }).compileComponents();
       const spy = spyOn(
         accountServiceStub,
@@ -56,7 +57,7 @@ describe('AccountListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AccountListComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture.detectChanges();
   });
 
   it('should be created', () => {
