@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatListItem, MatList, MatRipple } from '@angular/material';
 
 import { CompanyComponent } from './company.component';
-import { RouterLinkStubDirective } from '../testing/router-stubs';
+import { RouterLinkStubDirective } from '../testing/router-stubs.spec';
 import { CompanyService } from '../services/company.service';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';

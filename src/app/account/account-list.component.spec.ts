@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule } from '@angular/material';
 import { AccountService } from '../services/account.service';
-import { ActivatedRoute, ActivatedRouteStub, RouterLinkStubDirective } from '../testing/router-stubs';
+import { ActivatedRoute, ActivatedRouteStub, RouterLinkStubDirective } from '../testing/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
