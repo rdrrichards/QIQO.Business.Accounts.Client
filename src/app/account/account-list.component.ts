@@ -2,16 +2,12 @@ import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataSource } from '@angular/cdk/table';
 import { MatPaginator } from '@angular/material';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/operator/startWith';
-// import 'rxjs/add/observable/merge';
-// import 'rxjs/add/operator/map';
 
 import { IAccountViewModel } from '../models/account';
 import { AccountService } from '../services/account.service';
 import { Subscription } from 'rxjs/Subscription';
 import { AccountDataSource } from './account.datasource';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-account-list',
@@ -32,7 +28,16 @@ export class AccountListComponent implements OnInit, OnDestroy {
         this.paramSubscription = this.activatedRoute.params.subscribe(params => {
             const companyId = +params['id'];
             this.accountService.getAccountsByCompany(companyId)
-                .subscribe(accounts => this.accounts = accounts);
+                .subscribe(
+                  accounts => this.accounts = accounts,
+                  (err: HttpErrorResponse) => {
+                    if (err.error instanceof Error) {
+                      console.log('An error occurred:', err.error.message);
+                    } else {
+                      console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+                    }
+                  }
+                );
             this.dataSource = new AccountDataSource(this.accountService, companyId, this.paginator);
         }
         );
