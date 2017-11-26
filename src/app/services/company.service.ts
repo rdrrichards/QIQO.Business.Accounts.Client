@@ -7,15 +7,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 
-import { ICompany } from '../models/company';
+import { QIQOResponse } from '../models/response';
 
 @Injectable()
 export class CompanyService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllCompanies(): Observable<ICompany[]> {
-    return this.httpClient.get<ICompany[]>(`${CONFIG.baseUrls.companies}`).map(
+  getAllCompanies(): Observable<QIQOResponse> {
+    return this.httpClient.get<QIQOResponse>(`${CONFIG.baseUrls.companies}`).map(
       response => response
     );
   }

@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
       const accountId = +params['id'];
       this.accountService
         .getAccount(accountId)
-        .subscribe(account => (this.account = account));
+        .subscribe(account => (this.account = account.result));
     });
   }
   goBack() {

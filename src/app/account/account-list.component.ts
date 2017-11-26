@@ -29,7 +29,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
             const companyId = +params['id'];
             this.accountService.getAccountsByCompany(companyId)
                 .subscribe(
-                  accounts => this.accounts = accounts,
+                  accounts => this.accounts = accounts.result,
                   (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
                       console.log('An error occurred:', err.error.message);
