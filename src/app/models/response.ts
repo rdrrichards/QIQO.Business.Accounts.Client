@@ -1,4 +1,4 @@
-export class QIQOResponse {
+export class ApiResponse {
   result: any;
   id: number;
   exception: any;

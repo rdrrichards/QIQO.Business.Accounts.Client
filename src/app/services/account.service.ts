@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { IAccountViewModel } from '../models/account';
-import { QIQOResponse } from '../models/response';
+import { ApiResponse } from '../models/response';
 
 @Injectable()
 export class AccountService {
@@ -14,9 +14,9 @@ export class AccountService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAccountsByCompany(companyId: number): Observable<QIQOResponse> {
+  getAccountsByCompany(companyId: number): Observable<ApiResponse> {
     // console.log('AccountService:getAccountsByCompany');
-    return this.httpClient.get<QIQOResponse>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).map(
+    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).map(
       response => {
         this.dataChange.next(response.result);
         return response;
@@ -24,9 +24,9 @@ export class AccountService {
     );
   }
 
-  getAccount(accountId: number): Observable<QIQOResponse> {
+  getAccount(accountId: number): Observable<ApiResponse> {
     // console.log('AccountService:getAccount');
-    return this.httpClient.get<QIQOResponse>(`${CONFIG.baseUrls.accounts}/${accountId}`).map(
+    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.accounts}/${accountId}`).map(
       response => response
     );
   }
