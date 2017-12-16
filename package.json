@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -44,8 +45,8 @@
     "karma-coverage-istanbul-reporter": "^1.3.0",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.2.1",
-    "ts-node": "~4.0.1",
+    "protractor": "~5.2.2",
+    "ts-node": "~4.0.2",
     "tslint": "~5.8.0",
     "typescript": "~2.6.2"
   }
