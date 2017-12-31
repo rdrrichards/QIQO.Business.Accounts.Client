@@ -34,13 +34,13 @@ module.exports = function (config) {
         global:  { // thresholds for all files
           statements: 85,
           lines: 50,
-          branches: 50,
+          branches: 0,
           functions: 60
         },
         each:  { // thresholds per file
           statements: 85,
           lines: 50,
-          branches: 50,
+          branches: 0,
           functions: 60
         }
       }
