@@ -1,7 +1,7 @@
 <h1>Account List</h1>
 <div class="example-container mat-elevation-z8">
 
-  <mat-table #table [dataSource]="dataSource">
+  <mat-table #table [dataSource]="dataSource" matSort>
 
     <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -14,7 +14,7 @@
 
     <!-- Progress Column -->
     <ng-container matColumnDef="account.accountCode">
-      <mat-header-cell *matHeaderCellDef> Code </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Code </mat-header-cell>
       <mat-cell *matCellDef="let row">
         <a href="" [routerLink]="['/accounts', row.account.accountKey]"> {{row.account.accountCode}} </a>
       </mat-cell>
@@ -22,7 +22,7 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="account.accountName">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.account.accountName}} </mat-cell>
     </ng-container>
 

@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataSource } from '@angular/cdk/table';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 import { IAccountViewModel } from '../models/account';
 import { AccountService } from '../services/account.service';
 import { Subscription } from 'rxjs/Subscription';
-import { AccountDataSource } from './account.datasource';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -16,8 +15,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AccountListComponent implements OnInit, OnDestroy {
     accounts: IAccountViewModel[] = [];
     paramSubscription: Subscription;
-    dataSource: AccountDataSource | null;
+    dataSource: MatTableDataSource<IAccountViewModel>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
     displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
 
     constructor(private accountService: AccountService,
@@ -29,7 +29,12 @@ export class AccountListComponent implements OnInit, OnDestroy {
             const companyId = +params['id'];
             this.accountService.getAccountsByCompany(companyId)
                 .subscribe(
-                  accounts => this.accounts = accounts.result,
+                  accounts => {
+                    this.accounts = accounts.result;
+                    this.dataSource = new MatTableDataSource(this.accounts);
+                    this.dataSource.paginator = this.paginator;
+                    this.dataSource.sort = this.sort;
+                  },
                   (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {
                       console.log('An error occurred:', err.error.message);
@@ -38,11 +43,9 @@ export class AccountListComponent implements OnInit, OnDestroy {
                     }
                   }
                 );
-            this.dataSource = new AccountDataSource(this.accountService, companyId, this.paginator);
-        }
+          }
         );
     }
-
     ngOnDestroy(): void {
         this.paramSubscription.unsubscribe();
     }
