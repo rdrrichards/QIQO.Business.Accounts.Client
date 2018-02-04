@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IAccount, IAccountViewModel } from '../models/account';
+import { IAccountViewModel } from '../models/account';
 import { AccountService } from '../services/account.service';
 import { Subscription } from 'rxjs/Subscription';
 

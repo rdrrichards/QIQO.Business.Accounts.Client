@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataSource } from '@angular/cdk/table';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 import { IAccountViewModel } from '../models/account';
