@@ -20,7 +20,7 @@ describe('AppComponent', () => {
         declarations: [AppComponent, RouterOutletStubComponent ],
         providers: [ { provide: CompanyService, useValue: companyService } ]
       }).compileComponents();
-      const spay = spyOn(companyService, 'getAllCompanies').and.callThrough(); // (Observable.of([]));
+      // const spay = spyOn(companyService, 'getAllCompanies').and.callThrough(); // (Observable.of([]));
     })
   );
 

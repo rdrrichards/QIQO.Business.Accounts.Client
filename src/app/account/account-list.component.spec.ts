@@ -8,9 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountListComponent } from './account-list.component';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
 import { Subscription } from 'rxjs/Subscription';
 
 describe('AccountListComponent', () => {
@@ -30,9 +27,6 @@ describe('AccountListComponent', () => {
 
       fixture = TestBed.createComponent(AccountListComponent);
       component = fixture.componentInstance;
-
-      // const accountServiceStub = fixture.debugElement.injector.get(AccountService);
-      // const spy = spyOn(accountServiceStub, 'getAccountsByCompany').and.returnValue(Observable.of([]));
     })
   );
 
