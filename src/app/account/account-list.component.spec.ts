@@ -5,7 +5,7 @@ import { MatTableModule, MatPaginatorModule } from '@angular/material';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute, ActivatedRouteStub, RouterLinkStubDirective } from '../testing/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountListComponent } from './account-list.component';
 
@@ -31,8 +31,8 @@ describe('AccountListComponent', () => {
       fixture = TestBed.createComponent(AccountListComponent);
       component = fixture.componentInstance;
 
-      const accountServiceStub = fixture.debugElement.injector.get(AccountService);
-      const spy = spyOn(accountServiceStub, 'getAccountsByCompany').and.returnValue(Observable.of([]));
+      // const accountServiceStub = fixture.debugElement.injector.get(AccountService);
+      // const spy = spyOn(accountServiceStub, 'getAccountsByCompany').and.returnValue(Observable.of([]));
     })
   );
 

@@ -4,10 +4,9 @@ import { MatCardModule, MatButtonModule, MatRippleModule } from '@angular/materi
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute, ActivatedRouteStub } from '../testing/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountComponent } from './account.component';
-import { IAccountViewModel } from '../models/account';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
