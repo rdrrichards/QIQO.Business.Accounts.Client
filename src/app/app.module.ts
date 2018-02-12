@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatGridListModule, MatListModule, MatCardModule } from '@angular/material';
+import { MatTableModule, MatSortModule, MatPaginatorModule, MatGridListModule, MatListModule, MatCardModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
@@ -34,7 +34,7 @@ import {
     BrowserAnimationsModule,
     HttpClientModule,
     HttpModule,
-    MatTableModule, MatPaginatorModule, MatGridListModule, MatListModule, MatCardModule,
+    MatTableModule, MatSortModule, MatPaginatorModule, MatGridListModule, MatListModule, MatCardModule,
     CdkTableModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'companies', pathMatch: 'full' },

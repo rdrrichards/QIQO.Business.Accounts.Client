@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
@@ -11,18 +11,17 @@ import { HttpErrorResponse } from '@angular/common/http';
     selector: 'app-account-list',
     templateUrl: './account-list.component.html'
 })
-export class AccountListComponent implements OnInit, OnDestroy {
+export class AccountListComponent implements AfterViewInit, OnDestroy {
     accounts: IAccountViewModel[] = [];
     paramSubscription: Subscription;
     dataSource: MatTableDataSource<IAccountViewModel>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
-
     constructor(private accountService: AccountService,
         private activatedRoute: ActivatedRoute) { }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         // console.log('AccountListComponent:ngOnInit');
         this.paramSubscription = this.activatedRoute.params.subscribe(params => {
             const companyId = +params['id'];
@@ -30,7 +29,7 @@ export class AccountListComponent implements OnInit, OnDestroy {
                 .subscribe(
                   accounts => {
                     this.accounts = accounts.result;
-                    this.dataSource = new MatTableDataSource(this.accounts);
+                    this.dataSource = new MatTableDataSource(accounts.result);
                     this.dataSource.paginator = this.paginator;
                     this.dataSource.sort = this.sort;
                   },
