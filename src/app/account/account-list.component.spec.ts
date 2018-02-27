@@ -35,7 +35,7 @@ describe('AccountListComponent', () => {
   });
 
   it('ngOnInit should return void', () => {
-    expect(component.ngOnInit()).toBeUndefined();
+    expect(component.ngAfterViewInit()).toBeUndefined();
   });
 
   it('ngOnDestroy should return void', () => {
