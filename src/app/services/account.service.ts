@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CONFIG } from '../common/config';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// tslint:disable-next-line:import-blacklist
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IAccountViewModel } from '../models/account';
 import { ApiResponse } from '../models/response';
 
@@ -16,17 +16,17 @@ export class AccountService {
 
   getAccountsByCompany(companyId: number): Observable<ApiResponse> {
     // console.log('AccountService:getAccountsByCompany');
-    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).map(
-      response => {
+    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.companies}/${companyId}/accounts`).pipe(
+      map(response => {
         this.dataChange.next(response.result);
         return response;
-      }
+      })
     );
   }
 
   getAccount(accountId: number): Observable<ApiResponse> {
     // console.log('AccountService:getAccount');
-    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.accounts}/${accountId}`).map(
+    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.accounts}/${accountId}`).pipe(
       response => response
     );
   }

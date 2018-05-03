@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IAccountViewModel } from '../models/account';
 import { AccountService } from '../services/account.service';
-import { Subscription } from 'rxjs/Subscription';
+// tslint:disable-next-line:import-blacklist
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-account',
