@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
-import { IAccountViewModel } from '../models/account';
+import { IAccount } from '../models/account';
 import { AccountService } from '../services/account.service';
 // tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
@@ -13,9 +13,9 @@ import { HttpErrorResponse } from '@angular/common/http';
     templateUrl: './account-list.component.html'
 })
 export class AccountListComponent implements AfterViewInit, OnDestroy {
-    accounts: IAccountViewModel[] = [];
+    accounts: IAccount[] = [];
     paramSubscription: Subscription;
-    dataSource: MatTableDataSource<IAccountViewModel>;
+    dataSource: MatTableDataSource<IAccount>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
@@ -29,10 +29,13 @@ export class AccountListComponent implements AfterViewInit, OnDestroy {
             this.accountService.getAccountsByCompany(companyId)
                 .subscribe(
                   accounts => {
-                    this.accounts = accounts.result;
-                    this.dataSource = new MatTableDataSource(accounts.result);
+                    // const accts = accounts.map(a => new AccountViewModel(a));
+                    this.accounts = accounts;
+                    this.dataSource = new MatTableDataSource(this.accounts);
                     this.dataSource.paginator = this.paginator;
                     this.dataSource.sort = this.sort;
+                    // console.log('accts', accts);
+                    console.log('this.accounts', this.accounts);
                   },
                   (err: HttpErrorResponse) => {
                     if (err.error instanceof Error) {

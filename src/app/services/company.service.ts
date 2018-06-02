@@ -4,20 +4,21 @@ import { CONFIG } from '../common/config';
 
 // tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs';
+import { ICompany } from '../models/company';
 // import { map } from 'rxjs/operators';
 // import 'rxjs/add/operator/map';
 // import 'rxjs/add/operator/do';
 // import 'rxjs/add/operator/catch';
 
-import { ApiResponse } from '../models/response';
+// import { ApiResponse } from '../models/response';
 
 @Injectable()
 export class CompanyService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllCompanies(): Observable<ApiResponse> {
-    return this.httpClient.get<ApiResponse>(`${CONFIG.baseUrls.companies}`).pipe(
+  getAllCompanies(): Observable<ICompany[]> {
+    return this.httpClient.get<ICompany[]>(`${CONFIG.baseUrls.companies}`).pipe(
       response => response
     );
   }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IAccountViewModel } from '../models/account';
+import { IAccount } from '../models/account';
 import { AccountService } from '../services/account.service';
-// tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
-  account: IAccountViewModel;
+  account: IAccount;
   paramSubscription: Subscription;
 
   constructor(
@@ -27,7 +26,10 @@ export class AccountComponent implements OnInit {
       const accountId = +params['id'];
       this.accountService
         .getAccount(accountId)
-        .subscribe(account => (this.account = account.result));
+        .subscribe(account => {
+          this.account = account;
+          console.log('this.account', this.account);
+        });
     });
   }
   goBack() {

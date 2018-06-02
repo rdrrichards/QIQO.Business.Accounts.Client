@@ -18,6 +18,10 @@ export interface IAccount {
     feeSchedules: IFeeSchedule[];
 }
 
-export interface IAccountViewModel {
-    account: IAccount;
-}
+// export interface IAccountViewModel {
+//     account: IAccount;
+// }
+
+// export class AccountViewModel implements IAccountViewModel {
+//   constructor(public account: IAccount) {}
+// }
