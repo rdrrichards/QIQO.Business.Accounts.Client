@@ -8,6 +8,13 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "noImplicitAny": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch":true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "typeRoots": [
       "node_modules/@types"
     ],
