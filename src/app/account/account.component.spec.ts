@@ -8,8 +8,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountComponent } from './account.component';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
@@ -30,7 +29,7 @@ describe('AccountComponent', () => {
       component = fixture.componentInstance;
 
       const accountServiceStub = fixture.debugElement.injector.get(AccountService);
-      const spy = spyOn(accountServiceStub, 'getAccount').and.returnValue(Observable.of({}));
+      const spy = spyOn(accountServiceStub, 'getAccount').and.returnValue(of({}));
     })
   );
 

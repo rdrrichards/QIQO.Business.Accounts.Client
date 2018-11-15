@@ -5,8 +5,7 @@ import { CompanyComponent } from './company.component';
 import { RouterLinkStubDirective } from '../testing/router-stubs.spec';
 import { CompanyService } from '../services/company.service';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import { Observable, of } from 'rxjs';
 
 describe('CompanyComponent', () => {
   let component: CompanyComponent;
@@ -14,7 +13,7 @@ describe('CompanyComponent', () => {
   const companyService = new CompanyService(
     new HttpClient({
       handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-        return Observable.of(<HttpEvent<any>>{});
+        return of(<HttpEvent<any>>{});
       }
     })
   );

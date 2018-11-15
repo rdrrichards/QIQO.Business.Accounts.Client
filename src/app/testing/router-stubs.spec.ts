@@ -36,9 +36,8 @@ export class RouterStub {
 
 // Only implements params and part of snapshot.paramMap
 // #docregion activated-route-stub
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { convertToParamMap, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ActivatedRouteStub {
@@ -62,8 +61,7 @@ export class ActivatedRouteStub {
   }
 
   // ActivatedRoute.snapshot.paramMap
-  get params() // : Observable<ParamMap>
-  {
+  get params() { // : Observable<ParamMap>
     return this.paramMap;
   }
 }

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AccountListComponent } from './account-list.component';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 describe('AccountListComponent', () => {
   let component: AccountListComponent;

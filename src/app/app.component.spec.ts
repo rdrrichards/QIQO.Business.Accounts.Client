@@ -3,15 +3,14 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterOutletStubComponent } from './testing/router-stubs.spec';
 import { CompanyService } from './services/company.service';
-import 'rxjs/add/observable/of';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 
 describe('AppComponent', () => {
   const companyService = new CompanyService(
     new HttpClient(
       { handle: (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-                  return Observable.of(<HttpEvent<any>>{});
+                  return of(<HttpEvent<any>>{});
                   }
       }));
   beforeEach(
