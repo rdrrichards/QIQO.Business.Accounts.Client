@@ -4,7 +4,6 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 
 import { IAccount } from '../models/account';
 import { AccountService } from '../services/account.service';
-// tslint:disable-next-line:import-blacklist
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
