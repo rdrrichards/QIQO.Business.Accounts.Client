@@ -9,11 +9,26 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AccountComponent } from './account.component';
 
 import { of } from 'rxjs';
+import { IAccount } from '../models/account';
 
 describe('AccountComponent', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
   const actvatedRouteStub = new ActivatedRouteStub();
+  const account: IAccount = {
+    accountKey: 0,
+    companyKey: 0,
+    accountCode: '',
+    accountName: '',
+    accountDesc: '',
+    accountDBA: '',
+    accountStartDate: new Date(),
+    accountEndDate: new Date(),
+    addresses: [],
+    accountAttributes: [],
+    employees: [],
+    feeSchedules: []
+  };
 
   beforeEach(
     async(() => {
@@ -29,7 +44,7 @@ describe('AccountComponent', () => {
       component = fixture.componentInstance;
 
       const accountServiceStub = fixture.debugElement.injector.get(AccountService);
-      const spy = spyOn(accountServiceStub, 'getAccount').and.returnValue(of({}));
+      const spy = spyOn(accountServiceStub, 'getAccount').and.returnValue(of(account));
     })
   );
 
