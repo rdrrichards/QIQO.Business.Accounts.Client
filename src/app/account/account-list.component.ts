@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { IAccount } from '../models/account';
 import { AccountService } from '../services/account.service';
@@ -15,8 +17,8 @@ export class AccountListComponent implements AfterViewInit, OnDestroy {
     accounts: IAccount[] = [];
     paramSubscription: Subscription;
     dataSource: MatTableDataSource<IAccount>;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+    @ViewChild(MatSort, {static: true}) sort: MatSort;
     displayedColumns = ['account.accountCode', 'account.accountName', 'account.accountDesc'];
     constructor(private accountService: AccountService,
         private activatedRoute: ActivatedRoute) { }

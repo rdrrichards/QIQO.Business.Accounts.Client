@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatListItem, MatList, MatRipple, MatNavList } from '@angular/material';
+import { MatRipple } from '@angular/material/core';
+import { MatListItem, MatList, MatNavList } from '@angular/material/list';
 
 import { CompanyComponent } from './company.component';
 import { RouterLinkStubDirective } from '../testing/router-stubs.spec';

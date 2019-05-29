@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute, ActivatedRouteStub, RouterLinkStubDirective } from '../testing/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';

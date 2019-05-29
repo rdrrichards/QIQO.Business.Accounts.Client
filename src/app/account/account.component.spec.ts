@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatCardModule, MatButtonModule, MatRippleModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatRippleModule } from '@angular/material/core';
 import { AccountService } from '../services/account.service';
 import { ActivatedRoute, ActivatedRouteStub } from '../testing/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
