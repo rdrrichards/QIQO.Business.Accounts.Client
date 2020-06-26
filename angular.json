@@ -128,9 +128,7 @@
   },
   "defaultProject": "qiqo.business.accounts.client",
   "cli": {
-    "warnings": {
-      "typescriptMismatch": false
-    }
+    "warnings": {}
   },
   "schematics": {
     "@schematics/angular:component": {
