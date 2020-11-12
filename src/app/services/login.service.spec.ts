@@ -1,11 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { LoginService } from './login.service';
 
 describe('LoginService', () => {
   let service: LoginService;
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       service = new LoginService();
     })
   );

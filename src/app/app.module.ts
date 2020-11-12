@@ -40,14 +40,14 @@ import {
     MatTableModule, MatSortModule, MatPaginatorModule, MatGridListModule, MatListModule, MatCardModule,
     CdkTableModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'companies', pathMatch: 'full' },
-      { path: 'companies', component: CompanyComponent },
-      { path: 'companies/:id', component: AccountListComponent },
-      // { path: 'accounts', component: AccountListComponent },
-      { path: 'accounts/:id', component: AccountComponent },
-      // { path: 'accounts/:id/edit', component: AccountComponent },
-      { path: '**', redirectTo: 'companies' }
-    ])
+    { path: '', redirectTo: 'companies', pathMatch: 'full' },
+    { path: 'companies', component: CompanyComponent },
+    { path: 'companies/:id', component: AccountListComponent },
+    // { path: 'accounts', component: AccountListComponent },
+    { path: 'accounts/:id', component: AccountComponent },
+    // { path: 'accounts/:id/edit', component: AccountComponent },
+    { path: '**', redirectTo: 'companies' }
+], { relativeLinkResolution: 'legacy' })
 
   ],
   providers: [AccountService, AddressService, CompanyService, EmployeeService,

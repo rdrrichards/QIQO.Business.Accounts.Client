@@ -1,11 +1,11 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AddressService } from './address.service';
 
 describe('AddressService', () => {
   let service: AddressService;
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       service = new AddressService();
     })
   );

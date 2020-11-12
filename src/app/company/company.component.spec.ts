@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatRipple } from '@angular/material/core';
 import { MatListItem, MatList, MatNavList } from '@angular/material/list';
 
@@ -20,7 +20,7 @@ describe('CompanyComponent', () => {
   );
 
   beforeEach(
-    async(() => {
+    waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [
           CompanyComponent,
