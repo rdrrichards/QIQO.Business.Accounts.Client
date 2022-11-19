@@ -47,7 +47,7 @@ import {
     { path: 'accounts/:id', component: AccountComponent },
     // { path: 'accounts/:id/edit', component: AccountComponent },
     { path: '**', redirectTo: 'companies' }
-], { relativeLinkResolution: 'legacy' })
+], {})
 
   ],
   providers: [AccountService, AddressService, CompanyService, EmployeeService,
