@@ -8,12 +8,12 @@
     "declaration": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "target": "es2020",
+    "target": "ES2022",
     "noImplicitAny": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch":true,
+    "noFallthroughCasesInSwitch": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
     "typeRoots": [
@@ -22,6 +22,7 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "useDefineForClassFields": false
   }
 }
