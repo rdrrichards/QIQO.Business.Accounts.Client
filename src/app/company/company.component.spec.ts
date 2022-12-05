@@ -3,7 +3,7 @@ import { MatRipple } from '@angular/material/core';
 import { MatLegacyListItem as MatListItem, MatLegacyList as MatList, MatLegacyNavList as MatNavList } from '@angular/material/legacy-list';
 
 import { CompanyComponent } from './company.component';
-import { RouterLinkStubDirective } from '../testing/router-stubs.spec';
+import { RouterLinkStubDirective } from '../tester/router-stubs.spec';
 import { CompanyService } from '../services/company.service';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable, of } from 'rxjs';

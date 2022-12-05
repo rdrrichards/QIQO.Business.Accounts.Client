@@ -4,7 +4,7 @@ import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/lega
 import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
 import { MatRippleModule } from '@angular/material/core';
 import { AccountService } from '../services/account.service';
-import { ActivatedRoute, ActivatedRouteStub } from '../testing/router-stubs.spec';
+import { ActivatedRoute, ActivatedRouteStub } from '../tester/router-stubs.spec';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 

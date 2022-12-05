@@ -1,7 +1,7 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { RouterOutletStubComponent } from './testing/router-stubs.spec';
+import { RouterOutletStubComponent } from './tester/router-stubs.spec';
 import { CompanyService } from './services/company.service';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable, of } from 'rxjs';

@@ -5,7 +5,7 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     files: [
-      {pattern: './src/app/testing', included: false, watched: true},
+      //{pattern: './src/app/testing', included: false, watched: true},
       {pattern: './node_modules/@angular/material/prebuilt-themes/indigo-pink.css', included: true, watched: true},
     ],
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
