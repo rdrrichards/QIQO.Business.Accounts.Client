@@ -28,6 +28,7 @@ describe('AccountListComponent', () => {
 
       fixture = TestBed.createComponent(AccountListComponent);
       component = fixture.componentInstance;
+      component.paramSubscription = new Subscription();
     })
   );
 
