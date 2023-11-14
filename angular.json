@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "qiqo.business.accounts.client:build"
+            "buildTarget": "qiqo.business.accounts.client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "qiqo.business.accounts.client:build:production"
+              "buildTarget": "qiqo.business.accounts.client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "qiqo.business.accounts.client:build"
+            "buildTarget": "qiqo.business.accounts.client:build"
           }
         },
         "test": {
